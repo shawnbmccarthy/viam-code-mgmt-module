@@ -100,6 +100,8 @@ class CodeMgmtSensor(Sensor, Reconfigurable):
             logger.info('attempting to start install')
             self.install_thread = installer.Installer(package_info, logger)
             self.install_thread.start()
+        else:
+            logger.info('no install needed')
 
         self.package_info = package_info
 
