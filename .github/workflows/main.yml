@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: build
-        run: tar -czf module.tar.gz main.py requirements.txt run.sh components web_vars.sh
+        run: tar -czf module.tar.gz main.py requirements.txt run.sh components
       - uses: viamrobotics/upload-module@v1
         if: github.event_name == 'release'
         with:
