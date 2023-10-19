@@ -1,6 +1,6 @@
 {
   "module_id": "shawns-modules:viam-code-mgmt-module",
-  "visibility": "private",
+  "visibility": "public",
   "url": "https://github.com/shawnbmccarthy/viam-code-mgmt-module",
   "description": "this is a generic example of how to deploy & manage one or more applications using a Viam module, see README.md in repo for more info",
   "models": [
