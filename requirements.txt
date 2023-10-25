@@ -15,6 +15,6 @@ Pillow==10.0.1
 protobuf==4.24.3
 requests==2.31.0
 typing_extensions==4.8.0
-urllib3==2.0.6
+urllib3==2.0.7
 viam-sdk==0.7.0
 yarl==1.9.2
