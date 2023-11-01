@@ -28,7 +28,7 @@ class CodeMgmtSensor(Sensor, Reconfigurable):
     found in the configuration.
     """
     MODEL: ClassVar[Model] = Model(ModelFamily('shawns-modules', 'code-mgmt'), 'sensor')
-    HEALTH_CHECK_KEYS: List[str] = ['type']
+    HEALTH_CHECK_KEYS: List[str] = ['type', 'install_dir']
     PACKAGE_INFO_KEYS: List[str] = ['org', 'repo', 'release', 'make_opts']
 
     health_check: Dict[str, Any] | None
