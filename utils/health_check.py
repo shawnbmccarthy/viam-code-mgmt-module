@@ -1,8 +1,11 @@
 import requests
 import os
+import logging
 
 from typing import Any, Dict
+from viam.logging import getLogger
 
+logger: logging.Logger = getLogger(__name__)
 
 def run_health_check(properties: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -23,13 +26,14 @@ def run_health_check(properties: Dict[str, Any]) -> Dict[str, Any]:
             except Exception as e:
                 results[i] = {'status': f'failed to connect: {e}'}
     elif properties['type'] == 'ros2_ws':
-
-        if os.path.exists(properties['install_dir']):
-            results['status'] = 'Installed'
-            nodes = [x[0] for x in os.walk(properties['install_dir'])]           
-            results['nodes'] = nodes 
-        else:
-            results['status'] = 'Not installed'
-
-
+        try:
+            if os.path.exists(properties['install_dir']):
+                results['status'] = 'Installed'
+                dirs= os.listdir(properties['install_dir'] + '/src')         
+                results['nodes'] = dirs 
+            else:
+                results['status'] = 'Not installed'
+        except KeyError as e:
+            logger.error("Error: no install_dir")
+            results['status'] = 'N/A'
     return results
